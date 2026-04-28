@@ -1,0 +1,19 @@
+{
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  "github.copilot.chat.generateTests.codeLens": true,
+  "github.copilot.chat.edits.suggestRelatedFilesFromGitHistory": true,
+
+  "files.exclude": {
+    "**/bin": true,
+    "**/obj": true,
+    "**/.vs": true
+  },
+  "search.exclude": {
+    "**/bin": true,
+    "**/obj": true,
+    "**/Migrations": false
+  },
+  "editor.rulers": [120],
+  "editor.formatOnSave": true,
+  "omnisharp.enableEditorConfigSupport": true
+}

@@ -1,0 +1,38 @@
+{
+  // .vscode/mcp.json — MCP servers for the .NET API stack.
+  // Top-level key is "servers" (NOT "mcpServers" — that's Claude Desktop / Cursor).
+  // First-time start prompts for any ${input:*} values; values are stored in the OS keychain.
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "mssql-conn",
+      "description": "MSSQL connection string (e.g. Server=localhost;Database=app;User Id=sa;Password=...)",
+      "password": true
+    }
+  ],
+  "servers": {
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp"
+    },
+    "filesystem": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "${workspaceFolder}"]
+    },
+    // "fetch" requires `uv` on PATH. Install: `winget install astral-sh.uv`. Remove this block if uv is unavailable.
+    "fetch": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["mcp-server-fetch"]
+    },
+    "mssql": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "mssql-mcp-server"],
+      "env": {
+        "MSSQL_CONNECTION_STRING": "${input:mssql-conn}"
+      }
+    }
+  }
+}

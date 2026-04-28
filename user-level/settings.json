@@ -1,0 +1,119 @@
+{
+  // ── Copilot Core ──
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": true,
+    "yaml": true,
+    "json": true,
+    "jsonc": true
+  },
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "github.copilot.nextEditSuggestions.fixes": true,
+
+  // ── Copilot Chat ──
+  "github.copilot.chat.localeOverride": "en",
+  "github.copilot.chat.useProjectTemplates": true,
+  "github.copilot.chat.scopeSelection": true,
+  "github.copilot.chat.codesearch.enabled": true,
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+
+  // ── Agent mode ──
+  "github.copilot.chat.agent.autoFix": true,
+  "github.copilot.chat.agent.thinkingTool": true,
+  "github.copilot.chat.summarizeAgentConversationHistory.enabled": true,
+  "github.copilot.chat.organizationInstructions.enabled": true,
+  "github.copilot.chat.organizationCustomAgents.enabled": true,
+  "chat.agent.maxRequests": 50,
+
+  // ── Auto-approval (granular; safe defaults — review before sharing across team) ──
+  "chat.tools.global.autoApprove": false,
+  "chat.tools.edits.autoApprove": false,
+  "chat.tools.terminal.autoApprove": {
+    "ls": true,
+    "cat": true,
+    "rg": true,
+    "grep": true,
+    "find": true,
+    "echo": true,
+    "git": true,
+    "/^npm (run|test|install|ci|i)\\b/": true,
+    "/^dotnet (build|test|restore|run)\\b/": true,
+    "/^helm (lint|template|diff)\\b/": true,
+    "rm": false,
+    "rmdir": false,
+    "del": false,
+    "kill": false,
+    "curl": false,
+    "wget": false,
+    "chmod": false,
+    "chown": false
+  },
+
+  // ── Checkpoints (rollback safety) ──
+  "chat.checkpoints.enabled": true,
+  "chat.checkpoints.showFileChanges": true,
+
+  // ── Cross-tool instruction files ──
+  "chat.useAgentsMdFile": true,
+  "chat.useClaudeMdFile": true,
+  "chat.useNestedAgentsMdFiles": false,
+  "chat.useCustomizationsInParentRepositories": true,
+
+  // ── MCP ──
+  "chat.mcp.discovery.enabled": true,
+  "chat.mcp.autoStart": true,
+
+  // ── Test / code-gen helpers ──
+  "github.copilot.chat.generateTests.codeLens": true,
+  "github.copilot.chat.startDebugging.enabled": true,
+  "github.copilot.chat.edits.suggestRelatedFilesFromGitHistory": true,
+  "github.copilot.chat.terminalChatLocation": "chatView",
+
+  // ── Editor ──
+  "editor.inlineSuggest.enabled": true,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.rulers": [120],
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.stickyScroll.enabled": true,
+  "editor.minimap.enabled": false,
+
+  // ── Terminal ──
+  "terminal.integrated.fontSize": 13,
+
+  // ── Files ──
+  "files.autoSave": "onFocusChange",
+  "files.exclude": {
+    "**/bin": true,
+    "**/obj": true,
+    "**/node_modules": true,
+    "**/.git": true
+  },
+  "search.exclude": {
+    "**/bin": true,
+    "**/obj": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/coverage": true
+  },
+
+  // ── Git ──
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+
+  // ── C# / .NET ──
+  "dotnet.defaultSolution": "disable",
+  "omnisharp.enableEditorConfigSupport": true,
+
+  // ── TypeScript ──
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.suggest.autoImports": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+  // ── Explorer ──
+  "explorer.confirmDelete": false,
+  "explorer.compactFolders": false
+}

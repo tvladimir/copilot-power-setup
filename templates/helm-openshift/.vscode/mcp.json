@@ -1,0 +1,21 @@
+{
+  // .vscode/mcp.json — MCP servers for Helm / OpenShift charts.
+  // No first-party Helm/K8s MCP server exists yet — use `@DevOpsPilot` agent + terminal.
+  "servers": {
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp"
+    },
+    "filesystem": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "${workspaceFolder}"]
+    },
+    // "fetch" requires `uv` on PATH. Install: `winget install astral-sh.uv`. Remove this block if uv is unavailable.
+    "fetch": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["mcp-server-fetch"]
+    }
+  }
+}

@@ -1,0 +1,48 @@
+# === Copilot ===
+GitHub.copilot
+GitHub.copilot-chat
+
+# === C# / .NET ===
+ms-dotnettools.csdevkit
+ms-dotnettools.csharp
+ms-dotnettools.vscode-dotnet-runtime
+
+# === TypeScript / React ===
+dbaeumer.vscode-eslint
+esbenp.prettier-vscode
+bradlc.vscode-tailwindcss
+
+# === Editor / IntelliSense ===
+EditorConfig.EditorConfig
+christian-kohler.path-intellisense
+VisualStudioExptTeam.vscodeintellicode
+
+# === Git / GitHub ===
+eamodio.gitlens
+mhutchie.git-graph
+GitHub.vscode-pull-request-github
+
+# === Containers / K8s / Helm / OpenShift ===
+ms-azuretools.vscode-containers
+ms-kubernetes-tools.vscode-kubernetes-tools
+tim-koehler.helm-intellisense
+redhat.vscode-openshift-connector
+ms-vscode-remote.remote-containers
+
+# === Database ===
+ms-mssql.mssql
+ms-mssql.sql-database-projects
+
+# === API / HTTP testing ===
+humao.rest-client
+
+# === Utilities ===
+usernamehw.errorlens
+gruntfuggly.todo-tree
+streetsidesoftware.code-spell-checker
+redhat.vscode-yaml
+ms-vscode.powershell
+
+# === Themes ===
+dracula-theme.theme-dracula
+# PKief.material-icon-theme

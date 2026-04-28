@@ -1,0 +1,14 @@
+# Local Claude Code project state
+.claude/
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Editor noise
+*.swp
+*.swo
+*~
