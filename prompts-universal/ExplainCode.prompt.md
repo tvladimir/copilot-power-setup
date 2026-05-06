@@ -1,6 +1,8 @@
 ---
 name: "ExplainCode"
 description: "Explain code: what it does, why, how, potential issues"
+argument-hint: "paste the code (or use #selection to pull from the editor)"
+agent: "ask"
 tools: ['codebase', 'usages']
 ---
 

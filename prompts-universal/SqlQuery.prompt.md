@@ -1,6 +1,8 @@
 ---
 name: "SqlQuery"
 description: "Write or optimize SQL query for MS SQL Server"
+argument-hint: "describe the query + paste the schema (tables, indexes)"
+agent: "ask"
 tools: ['codebase']
 ---
 

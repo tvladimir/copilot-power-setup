@@ -26,6 +26,14 @@
   "github.copilot.chat.organizationCustomAgents.enabled": true,
   "chat.agent.maxRequests": 50,
 
+  // ── Permissions / autopilot ──
+  // "chat.permissions.default" sets the default permission level for new chat sessions.
+  // Options: "default" (Default Approvals — confirms each tool), "autoApprove" (auto-approve list below),
+  //          "autopilot" (YOLO — only available if chat.autopilot.enabled is true).
+  // Keep "default" until you've reviewed the auto-approve regex below for your env.
+  "chat.permissions.default": "default",
+  "chat.autopilot.enabled": true,
+
   // ── Auto-approval (granular; safe defaults — review before sharing across team) ──
   "chat.tools.global.autoApprove": false,
   "chat.tools.edits.autoApprove": false,
@@ -49,6 +57,8 @@
     "chmod": false,
     "chown": false
   },
+  // Show terminal command output inline in chat (vs in the integrated terminal panel).
+  "chat.tools.terminal.outputLocation": "chat",
 
   // ── Checkpoints (rollback safety) ──
   "chat.checkpoints.enabled": true,
@@ -59,6 +69,27 @@
   "chat.useClaudeMdFile": true,
   "chat.useNestedAgentsMdFiles": false,
   "chat.useCustomizationsInParentRepositories": true,
+  // Auto-pull instruction files referenced via Markdown links from a loaded instruction.
+  "chat.includeReferencedInstructions": true,
+
+  // ── Prompt files ──
+  // Recommend installed prompts (`/Foo`) when starting a new chat session.
+  "chat.promptFilesRecommendations": true,
+
+  // ── Agent Skills (stable since VS Code Jan 2026) ──
+  // Skills live in `.github/skills/<name>/SKILL.md` (workspace) or `~/.copilot/skills/` (user).
+  // Auto-discovered by the model from name+description; user can also invoke via /skillname.
+  "chat.useAgentSkills": true,
+  "chat.agentSkillsLocations": {
+    ".github/skills": true
+  },
+
+  // ── Agent Hooks ──
+  // Hooks live in `.github/hooks/*.json`. 8 lifecycle events: SessionStart, UserPromptSubmit,
+  // PreToolUse, PostToolUse, PreCompact, SubagentStart, SubagentStop, Stop.
+  "chat.hookFilesLocations": {
+    ".github/hooks": true
+  },
 
   // ── MCP ──
   "chat.mcp.discovery.enabled": true,
@@ -69,6 +100,29 @@
   "github.copilot.chat.startDebugging.enabled": true,
   "github.copilot.chat.edits.suggestRelatedFilesFromGitHistory": true,
   "github.copilot.chat.terminalChatLocation": "chatView",
+
+  // ── Commit message + PR description generation ──
+  // Each entry is either an inline rule ({"text": "..."}) or a file reference ({"file": "..."}).
+  // Files resolve relative to workspace root.
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    { "text": "Use Conventional Commits: type(scope): subject. Types: feat, fix, refactor, docs, test, chore, perf, ci, build." },
+    { "text": "Subject line max 72 chars, imperative mood, no trailing period." },
+    { "text": "Body explains the WHY, not the WHAT. Wrap at 100 chars. Skip the body for trivial changes." },
+    { "text": "Reference issue keys (e.g. JIRA-1234) on a separate trailing line when present." }
+  ],
+  "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
+    { "text": "Title in Conventional Commits style." },
+    { "text": "Body sections: ## Summary (2-3 bullets), ## Changes (file groups + intent), ## Test plan (checklist)." },
+    { "text": "Call out breaking changes, migration steps, and feature flags explicitly." }
+  ],
+
+  // ── Telemetry / observability (optional) ──
+  // Set otel.enabled=true and an exporter to ship Copilot Chat traces. Default off — switch on
+  // only if you have an OTLP collector running locally / in your network.
+  "github.copilot.chat.otel.enabled": false,
+  // "github.copilot.chat.otel.exporterType": "otlp",
+  // "github.copilot.chat.otel.otlpEndpoint": "http://localhost:4318",
+  // "github.copilot.chat.otel.captureContent": false,
 
   // ── Editor ──
   "editor.inlineSuggest.enabled": true,

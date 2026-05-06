@@ -1,6 +1,8 @@
 ---
 name: "WriteTests"
 description: "Generate comprehensive tests for a function or class"
+argument-hint: "code under test + target framework (xUnit / Jest / Vitest / pytest)"
+agent: "agent"
 tools: ['codebase', 'editFiles', 'findTestFiles']
 ---
 

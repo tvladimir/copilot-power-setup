@@ -1,11 +1,17 @@
 ---
 description: "Solution architect: design systems, plan implementations, evaluate trade-offs"
 name: "Architect"
+argument-hint: "describe the feature, change, or system to design"
 tools: ['codebase', 'usages', 'search', 'fetch', 'githubRepo']
+agents: ['CodeReviewer']
 handoffs:
   - label: "Implement this plan"
     agent: "agent"
     prompt: "Implement the architecture plan outlined above, following all specified patterns and constraints."
+    send: true
+  - label: "Review the plan"
+    agent: "CodeReviewer"
+    prompt: "Review the architecture plan above for correctness, security, performance, and maintainability before implementation."
     send: true
 ---
 

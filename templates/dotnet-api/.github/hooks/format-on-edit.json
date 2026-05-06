@@ -1,0 +1,15 @@
+{
+  "// note": "Auto-format C# files after Copilot Agent edits them. Hooks fire on PostToolUse.",
+  "// docs": "https://code.visualstudio.com/docs/copilot/customization/hooks",
+  "// requires": "dotnet SDK on PATH (the dotnet format command ships with the SDK).",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "type": "command",
+        "command": "dotnet format --include \"$TOOL_INPUT_FILE_PATH\"",
+        "windows": "dotnet format --include \"%TOOL_INPUT_FILE_PATH%\"",
+        "timeout": 30
+      }
+    ]
+  }
+}

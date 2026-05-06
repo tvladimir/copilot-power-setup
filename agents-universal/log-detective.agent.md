@@ -1,6 +1,7 @@
 ---
 description: "Analyze application logs, find root causes, suggest fixes"
 name: "LogDetective"
+argument-hint: "paste logs / stack trace, or point at a log file path"
 tools: ['runCommands', 'codebase', 'usages', 'terminalLastCommand', 'problems']
 ---
 
@@ -28,22 +29,11 @@ User provides logs via:
 - Pointing to a log file path
 - Describing the symptom
 
-## Commands You Support
+## Example Asks (after picking LogDetective from the agents dropdown)
 
-### Analyze log file
-```
-@LogDetective analyze this log: [paste or file path]
-```
-
-### Find error pattern
-```
-@LogDetective find all occurrences of "NullReferenceException" in recent logs
-```
-
-### Correlate events
-```
-@LogDetective trace request ID abc-123 across all services
-```
+- "Analyze this log: [paste or path]"
+- "Find all occurrences of `NullReferenceException` in recent logs"
+- "Trace request ID `abc-123` across all services"
 
 ### Kubernetes/OpenShift logs
 ```bash

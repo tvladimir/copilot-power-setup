@@ -41,6 +41,14 @@ Running log of corrections, surprises, and reasoning that informs future work in
 - **What was wrong:** Frontmatter on the root file is silently ignored — it's always-on regardless. `applyTo:` is meaningful only on path-scoped `.github/instructions/*.instructions.md`.
 - **Correct approach:** Drop the `applyTo` frontmatter from root files (kept here for now since it's harmless; clean up in a future pass if the editor flags it as a warning).
 
+## 2026-05-06 — Verify both directions: not just claims, also your own skepticism
+
+- **What happened:** Reviewing a 15-point improvement plan from Copilot research, I rejected ~7 items as "probably hallucinated" (skills, hooks, `chat.autopilot.enabled`, `chat.permissions.default`, `agents:` subagent frontmatter, `argument-hint`, etc.) without opening the docs.
+- **What was wrong:** I applied the "verify before claiming" rule one-sidedly — only against suggestions, not against my own absence of memory. "I don't recall this feature" is a signal to verify, not to dismiss.
+- **Correct approach:** Before pushing back on a Copilot/VS Code feature claim, fetch the official reference page (`copilot-settings`, `custom-agents`, `agent-skills`, `hooks`, `prompt-files`) and grep for the term. Empty result → push back. Match → accept. Memory of "I haven't seen this" is unreliable evidence — VS Code Copilot ships features quarterly.
+- **Verified real (May 2026)**: Agent Skills (`.github/skills/<name>/SKILL.md`, stable since Jan 2026), Agent Hooks (`.github/hooks/*.json`, 8 lifecycle events), `chat.autopilot.enabled`, `chat.permissions.default`, `chat.tools.terminal.outputLocation`, `chat.promptFilesRecommendations`, `chat.includeReferencedInstructions`, `chat.hookFilesLocations`, `chat.agentSkillsLocations`, `github.copilot.chat.commitMessageGeneration.instructions`, `github.copilot.chat.pullRequestDescriptionGeneration.instructions`, `github.copilot.chat.otel.enabled`. Frontmatter on `*.agent.md`: `agents`, `argument-hint`, `model`, `user-invocable`, `disable-model-invocation`. Frontmatter on `*.prompt.md`: `agent`, `model`, `argument-hint`.
+- **Verified false:** `${input:}` syntax is NOT deprecated; `vscode/askQuestion` is an alternative tool, not a replacement.
+
 ## 2026-04-27 — Windows-only target; Copilot CLI blocked
 
 - **What happened:** Initial design treated this as a portable Mac↔Windows toolkit; in reality the target environment is Windows only, and the GitHub Copilot CLI (`gh copilot`) is blocked by org policy.

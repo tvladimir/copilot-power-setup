@@ -1,6 +1,7 @@
 ---
 description: "OpenShift/Helm/K8s expert: deployments, troubleshooting, config"
 name: "DevOpsPilot"
+argument-hint: "describe the symptom (pod state, deploy error) or paste oc/helm output"
 tools: ['runCommands', 'codebase', 'terminalLastCommand', 'problems']
 ---
 

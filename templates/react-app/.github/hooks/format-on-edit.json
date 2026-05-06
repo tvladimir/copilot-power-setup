@@ -1,0 +1,21 @@
+{
+  "// note": "Auto-fix lint + format TS/TSX/JS/JSX files after Copilot Agent edits them.",
+  "// docs": "https://code.visualstudio.com/docs/copilot/customization/hooks",
+  "// requires": "Local devDeps: eslint + prettier. Skips silently if a file is not a JS/TS source.",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "type": "command",
+        "command": "npx --no-install eslint --fix \"$TOOL_INPUT_FILE_PATH\" || true",
+        "windows": "npx --no-install eslint --fix \"%TOOL_INPUT_FILE_PATH%\" || ver>nul",
+        "timeout": 30
+      },
+      {
+        "type": "command",
+        "command": "npx --no-install prettier --write \"$TOOL_INPUT_FILE_PATH\" || true",
+        "windows": "npx --no-install prettier --write \"%TOOL_INPUT_FILE_PATH%\" || ver>nul",
+        "timeout": 30
+      }
+    ]
+  }
+}

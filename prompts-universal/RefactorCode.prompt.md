@@ -1,6 +1,8 @@
 ---
 name: "RefactorCode"
 description: "Refactor code: improve quality without changing behavior"
+argument-hint: "code to refactor + goal (readability / perf / testability / DRY)"
+agent: "agent"
 tools: ['codebase', 'usages', 'editFiles']
 ---
 

@@ -11,20 +11,24 @@ A personal toolkit for configuring GitHub Copilot in VS Code on **Windows** (wor
 
 - `agents-universal/` — `*.agent.md` files copied into any project's `.github/agents/`
 - `prompts-universal/` — `*.prompt.md` files copied into any project's `.github/prompts/`
-- `templates/<stack>/` — per-stack starter `.github/` and `.vscode/` configs (dotnet-api, react-app, uikit, helm-openshift)
+- `skills-universal/<name>/SKILL.md` — portable agent skills copied into `.github/skills/` (workspace) or `~/.copilot/skills/` (user-level via installer `--skills`)
+- `templates/<stack>/` — per-stack starter `.github/` (instructions + optional hooks), `.vscode/`, and `.editorconfig` (dotnet-api, react-app, uikit, helm-openshift)
 - `user-level/` — global VS Code config (`settings.json`, `keybindings.json`, `extensions.txt`) to merge into the user profile
-- `install.ps1` — Windows / PowerShell installer
-- `install.sh` — Windows / Git Bash installer (equivalent functionality, different shell)
+- `install.ps1` — Windows / PowerShell installer (flags: `-SkipInstalled`, `-Skills`)
+- `install.sh` — Windows / Git Bash installer (equivalent functionality, different shell; flags: `--skip-installed`, `--skills`)
 - `docs/lessons.md` — running log of corrections and decisions
 
 ## Conventions when editing this repo
 
 - **Tool IDs in agent / prompt frontmatter are FLAT** (no slashes): `codebase`, `usages`, `editFiles`, `runCommands`, `runTasks`, `terminalLastCommand`, `terminalSelection`, `fetch`, `githubRepo`, `search`, `problems`, `changes`, `todos`, `findTestFiles`, `testFailure`, `extensions`, `vscodeAPI`, `think`. MCP wildcard: `<server>/*` (e.g. `playwright/*`).
 - **Custom agents** live in `.github/agents/*.agent.md` (canonical since VS Code v1.106, Oct 2025). Old `.chatmode.md` form still works for back-compat but new files use `.agent.md`.
-- **Prompt files** use `${input:name:placeholder}` for user-provided variables; `${selection}` for current editor selection.
+- **Prompt files** use `${input:name:placeholder}` for user-provided variables; `${selection}` for current editor selection. Optional frontmatter: `agent:` (`ask`/`agent`/`plan`/custom), `model:`, `argument-hint:`, `tools:`.
+- **Skills** live in `<name>/SKILL.md` form. Required frontmatter: `name` (lowercase + hyphens, ≤64 chars) + `description` (≤1024 chars, includes "use when …" clause). Auto-discovered by the model from the description; can also be invoked via `/skill-name`.
+- **Hooks** live in `.github/hooks/*.json`. Eight lifecycle events: `SessionStart`, `UserPromptSubmit`, `PreToolUse`, `PostToolUse`, `PreCompact`, `SubagentStart`, `SubagentStop`, `Stop`. Per-OS overrides via `windows` / `linux` / `osx` keys. Workspace hooks take precedence over user-level for the same event.
 - `applyTo:` frontmatter is meaningful only on `.github/instructions/*.instructions.md`. On the root `copilot-instructions.md` it is ignored (root file is always-on).
 - Top-level key in `.vscode/mcp.json` is **`servers`** (NOT `mcpServers`).
 - Custom agents are picked from the **agents dropdown** in chat — never claim `@AgentName` invocation.
+- Sub-agent composition via `agents: ['OtherAgent']` frontmatter; the parent agent's `handoffs:` array can target a sub-agent by name to wire one-click hand-offs.
 
 ## When changing this repo
 

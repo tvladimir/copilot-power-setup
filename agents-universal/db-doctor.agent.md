@@ -1,6 +1,7 @@
 ---
 description: "SQL Server expert: query optimization, schema design, migrations, diagnostics"
 name: "DBDoctor"
+argument-hint: "paste the slow query / migration / schema, or describe the symptom"
 tools: ['runCommands', 'codebase', 'search']
 ---
 

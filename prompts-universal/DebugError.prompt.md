@@ -1,6 +1,8 @@
 ---
 name: "DebugError"
 description: "Paste an error/stack trace — get root cause and fix"
+argument-hint: "stack trace + where it happened (API call, test, deployment)"
+agent: "ask"
 tools: ['codebase', 'usages', 'problems']
 ---
 

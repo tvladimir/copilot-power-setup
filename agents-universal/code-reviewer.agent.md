@@ -1,6 +1,7 @@
 ---
 description: "Thorough code review: bugs, security, performance, patterns"
 name: "CodeReviewer"
+argument-hint: "paste a diff, mention #changes, or point at file:line ranges to review"
 tools: ['codebase', 'usages', 'search', 'changes', 'problems']
 ---
 

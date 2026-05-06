@@ -1,6 +1,8 @@
 ---
 name: "HelmDebug"
 description: "Debug Helm chart or OpenShift deployment issue"
+argument-hint: "describe the issue + paste oc/helm output, events, or values"
+agent: "agent"
 tools: ['runCommands', 'codebase', 'terminalLastCommand']
 ---
 
